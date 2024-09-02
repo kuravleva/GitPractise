@@ -20,6 +20,11 @@ public class Circle extends Figure {
             System.out.print("круга: ");
             System.out.println(2*PI*radius);
         }
+
+    @Override
+    void drawTheCircle() {
+        System.out.println("C-I-R-C-L-E");
     }
+}
 
 
