@@ -7,7 +7,7 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) throws CloneNotSupportedException {
         Person ivan = new Person("Иван", "Иванов", 20);
-        Person andrew = new Person("Андрей", "Андреев", 19);
+        Person andrew = new Person("Андрей", "Иванов", 19);
         Person vasilisa = new Person("Василиса", "Васильева", 24);
 
 
