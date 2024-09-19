@@ -169,7 +169,7 @@ public class BookArrayList {
             //Вернуть всех военнообязанных мужчин (пол), которым меньше 27 и больше 18 и имя которых начинается на 'Н'
             System.out.println("Вернуть всех военнообязанных мужчин (пол), которым меньше 27 и больше 18 и имя которых начинается на 'Н'");
             for (Person person : maleList) {
-                if (person.getAge() < 27 && person.getAge() > 18 && person.getName().startsWith("N")) {
+                if (person.getAge() < 27 && person.getAge() >= 18 && person.getName().startsWith("N")) {
                     System.out.println(person);
                 }
             }
