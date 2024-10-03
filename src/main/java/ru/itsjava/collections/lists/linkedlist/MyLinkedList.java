@@ -24,13 +24,22 @@ public class MyLinkedList  {
     }
 
     public boolean contains(Object o) {
-        Node i;
-        for (i=head; i != null; i= i.getNext()){
-            if (i.getValue().equals(o)){
-                return true;
+//        Node i;
+//        for (i=head; i != null; i= i.getNext()){
+//            if (i.getValue().equals(o)){
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
+        Node curNode = head;
+        while (curNode != null) { // Проходим по списку до конца
+            if (curNode.getValue().equals(o)) { // Проверяем, совпадает ли текущий элемент с o
+                return true; // Если совпадает, возвращаем true
             }
+            curNode = curNode.getNext(); // Переходим к следующему узлу
         }
-        return false;
+        return false; // Если элемент не найден, возвращаем false
     }
 
     public boolean add(Object o) {
