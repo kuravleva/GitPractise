@@ -38,7 +38,7 @@ public class MyArrayList {
             array = resArray;
             //вставка нашего элемента
         }
-        array[realSize++] = 0;
+        array[realSize++] = o;
         return true;
     }
 
@@ -59,13 +59,13 @@ public class MyArrayList {
         return false;
     }
 
-//    public void clear() {
-//        for (int i = 0; i < realSize; i++) {
-//            array[i] = null;
-//        }
-//        realSize = 0;
-//        System.out.println("size() = " + size());
-//    }
+    public void clear() {
+        for (int i = 0; i < realSize; i++) {
+            array[i] = null;
+        }
+        realSize = 0;
+        System.out.println("size() = " + size());
+    }
 
 
     public Object get(int index) {
@@ -162,15 +162,15 @@ public class MyArrayList {
 //        }
 //        stringBuilder.append("}");
 //        return stringBuilder.toString();
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("MyArrayList{ ");
+        StringBuilder stringBuilder = new StringBuilder("MyArrayList{ ");
+//        stringBuilder.append("MyArrayList{ ");
         // Проходим по всем элементам массива
         for (int i = 0; i < realSize; i++) {
-            stringBuilder.append(array[i]);
+            stringBuilder.append(array[i]).append(" ");
             // Добавляем запятую, если это не последний элемент
-            if (i < realSize - 1) {
-                stringBuilder.append(", ");
-            }
+//            if (i < realSize - 1) {
+//                stringBuilder.append(", ");
+//            }
         }
         stringBuilder.append("}");
         return stringBuilder.toString();

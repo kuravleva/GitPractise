@@ -17,19 +17,17 @@ public class MyArrayListPractice {
         list.add("Пока");
         list.add("Пока");
         list.add("Пока");
-        System.out.println("list.size() = " + list.size());
 
+        System.out.println("list.size() = " + list.size());
+        System.out.println("list.toString() = " + list);
         System.out.println("list = " + list);
         System.out.println("list.isEmpty() = " + list.isEmpty());
         System.out.println("list.contains() = " + list.contains(list));
-//        list.clear();
+
         // 1 Test
-        System.out.println("Тест 1. Должно вывести TRUE: " + list.isEmpty());
+        System.out.println("Тест 1. Должно вывести FALSE: " + list.isEmpty());
         // 2 Test
         System.out.println("Тест 2. FALSE, если коллекция содержит о: " +list.contains(list));
-        // 3 Test
-//        System.out.print("Тест 3. Удаление коллекции: ");
-//        list.clear();
 
 
         System.out.println(list);
@@ -48,6 +46,8 @@ public class MyArrayListPractice {
 
         list.remove(1);
         System.out.println(list);
+
+        list.clear();
 
         MyArrayList list2 = new MyArrayList();
 
@@ -108,13 +108,14 @@ public class MyArrayListPractice {
 
         // Тестирование indexOf(Object o)
         System.out.println("Тестирование indexOf(Object o)");
-        System.out.println("Index of 'Третий': " + list3.indexOf("Second")); // Ожидается: 1
-        System.out.println("Index of 'Четвертый': " + list3.indexOf("First")); // Ожидается: 0
+        System.out.println("Index of 'Третий': " + list3.indexOf("Третий")); // Ожидается: 1
+        System.out.println("Index of 'Четвертый': " + list3.indexOf("Четвертый")); // Ожидается: 0
         System.out.println("Index of 'NonExistent': " + list3.indexOf("NonExistent")); // Ожидается: -1
 
         //Тестирование lastIndexOf(Object o)
         System.out.println("Тестирование lastIndexOf(Object o)");
         System.out.println("list.lastIndexOf(\"Девятый\") = " + list3.lastIndexOf("Девятый"));//Ожидается: -1
         System.out.println("list.lastIndexOf(\"Десятый\") = " + list3.lastIndexOf("Десятый"));//Ожидается: 1
+
     }
 }
