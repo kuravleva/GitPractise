@@ -17,5 +17,14 @@ public class MyLinkedListPractice {
         System.out.println("list.isEmpty() = " + list.isEmpty());
         System.out.println("list.contains(\"Строка 3\") = " + list.contains("Строка 3"));
         System.out.println("list.contains(\"Строка 4\") = " + list.contains("Строка 4"));
+
+        list.remove(2);
+        System.out.println("list = " + list);
+
+        System.out.println("list.get(1) = " + list.get(1));
+        list.set(1, 333);
+        System.out.println("list = " + list);
+        list.clear();
+        System.out.println("list = " + list);
     }
 }

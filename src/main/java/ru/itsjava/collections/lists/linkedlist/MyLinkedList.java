@@ -52,23 +52,109 @@ public class MyLinkedList  {
     }
 
     public void clear() {
+        head = null;
 
     }
 
     public Object get(int index) {
+        if (isEmpty()) {
+            return null;
+        }
+        if (index < 0 || index> size()){
+            return null;
+        }
+        int b = 0;
+        Node curNode = head;
+        while (curNode!=null){
+            if (b == index){
+                return curNode.getValue();
+            }
+            curNode = curNode.getNext();
+            b++;
+        }
         return null;
     }
 
     public Object set(int index, Object element) {
-        return null;
+        if (!isCorrectIndex(index)) {
+            throw new ArrayIndexOutOfBoundsException("Некорректный индекс");
+        }
+        Node curNode = head;
+        int b = 0 ;
+        while (b< index){
+            curNode= curNode.getNext();
+            b++;
+        }
+        Object resNode = curNode.getValue();
+        curNode.setValue(element);
+        return resNode;
     }
 
     public void add(int index, Object element) {
 
     }
-
+    // СТРОКА 1 -> null
+    // СТРОКА 1 -> СТРОКА 2 -> СТРОКА 3 -> null
     public Object remove(int index) {
-        return null;
+        //проверяем, корректный индекс или нет
+        checkIndex(index);
+        //если некорректный, то возвращается exception
+        //если индекс корректный, то как минимум есть одтн элемент (head)
+        //если индекс равен нулю, то удаляем первый элемент (head)
+        if (index == 0) {
+            Object resValue = head.getValue();
+            //если у нас есть только head
+            if (head.getNext() == null) {
+                //то head'у присваиваем null
+                head = null;
+                //иначе, есть не только head
+            } else {
+                //передвигаем ссылку head на след. элемент и рассматриваем только ее (без первого элемента)
+                head = head.getNext();
+            }
+            //если ничего не вернули, то есть 2 элемента
+            return resValue;
+        }
+        //нам нужно знать элемент до и после
+        Node curNode = head;
+        Node prevNode = head;
+        int count = 0;
+        //в первом действии curNode бежит к след элементу
+        while ((curNode = curNode.getNext()) != null) {
+            count++;
+            //здесь начинается проверка на выход. Если count равен индексу, то мы выходим из цикла
+            if (count == index) {
+                break;
+            }
+            prevNode = prevNode.getNext();
+        }
+        //возвращаем значение, которое удалили
+        Object resValue = curNode.getValue();
+        //мы вышли из цикла и хотим удалить элемент с конца
+        if (curNode.getNext() == null) {
+            //а предыдущему знаечению присваиваем null (если это последний элемент)
+            prevNode.setNext(null);
+        } else {
+        //а вдруг, мы оказались в середине (если это не последний элемент, то присваиваем предыдущему ссылку на последующий)
+        prevNode.setNext(curNode.getNext());
+        //а текущему элементу присваиваем ссылку null
+        curNode.setNext(null);
+    }
+        //сохраняем и возвращаем resValue
+        return resValue;
+    }
+
+    private void checkIndex(int index) {
+        if (!isCorrectIndex(index)) {
+            throw new ArrayIndexOutOfBoundsException("Некорректный индекс");
+        }
+    }
+
+    private boolean isCorrectIndex(int index) {
+        if ((index > -1) || (index < size())) {
+            return true;
+        }
+        return false;
     }
 
     public int indexOf(Object o) {
