@@ -69,6 +69,7 @@ public class MyArrayList {
 
 
     public Object get(int index) {
+        checkIndex(index);
         for (int i = 0; i < index; i++) {
             if (index < 0 || index > size()){
                 throw new ArrayIndexOutOfBoundsException();
@@ -79,6 +80,7 @@ public class MyArrayList {
 
 
     public Object set(int index, Object element) {
+        checkIndex(index);
         if (index < size() && index >= 0){
             Object o = array[index];
             array[index] = element;
@@ -86,14 +88,8 @@ public class MyArrayList {
         }
         return null;
     }
-
-    private void validateIndex(int index, int realSize) {
-        if (index < 0 || index >= realSize) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + realSize);
-        }
-    }
     public void add(int index, Object element) {
-        validateIndex(index, realSize);
+        checkIndex(index);
         if (realSize == array.length) {
             Object[] resArray = new Object[array.length * 3 / 2 + 1];
             System.arraycopy(array, 0, resArray, 0, index);
@@ -155,22 +151,10 @@ public class MyArrayList {
     @Override
     public String toString() {
 //        //return "MyArrayList{" + Arrays.toString(array) +'}';
-//        StringBuilder stringBuilder = new StringBuilder("MyArrayList{");
-//        for (int i = 0; i < realSize; i++) {
-//            stringBuilder.append(array[i]).append(" ");
-//
-//        }
-//        stringBuilder.append("}");
-//        return stringBuilder.toString();
         StringBuilder stringBuilder = new StringBuilder("MyArrayList{ ");
-//        stringBuilder.append("MyArrayList{ ");
         // Проходим по всем элементам массива
         for (int i = 0; i < realSize; i++) {
             stringBuilder.append(array[i]).append(" ");
-            // Добавляем запятую, если это не последний элемент
-//            if (i < realSize - 1) {
-//                stringBuilder.append(", ");
-//            }
         }
         stringBuilder.append("}");
         return stringBuilder.toString();
