@@ -100,16 +100,20 @@ public class MyLinkedList {
 
 
     public void clear() {
-        head = null;
+        while (head!=null){
+            Node temp = head;
+            head = head.next;
+            temp.next= null;
+        }
+        head=null;
+
 
     }
 
+
     public Object get(int index) {
-        if (isEmpty()) {
-            return null;
-        }
-        if (index < 0 || index> size()){
-            return null;
+        if (!isCorrectIndex(index)) {
+            throw new ArrayIndexOutOfBoundsException("Некорректный индекс");
         }
         int b = 0;
         Node curNode = head;

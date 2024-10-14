@@ -24,14 +24,16 @@ public class MyLinkedListPractice {
 //        System.out.println("list.get(1) = " + list.get(1));
 //        list.set(1, 333);
 //        System.out.println("list = " + list);
-//        list.clear();
-//        System.out.println("list = " + list);
+
 
         list.remove("Строка 4");
         System.out.println(list);
 
         System.out.println("list.indexOf() = " + list.indexOf("Строка 3"));
         System.out.println("list.lastIndexOf() = " + list.lastIndexOf("Строка 1"));
+
+        list.clear();
+        System.out.println("list = " + list);
 
     }
 }
