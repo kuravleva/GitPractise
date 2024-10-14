@@ -1,4 +1,4 @@
-package ru.itsjava.collections.lists.linkedlist;
+package ru.itsjava.collections.lists.linkedList;
 
 public class MyLinkedListPractice {
     public static void main(String[] args) {
@@ -18,13 +18,20 @@ public class MyLinkedListPractice {
         System.out.println("list.contains(\"Строка 3\") = " + list.contains("Строка 3"));
         System.out.println("list.contains(\"Строка 4\") = " + list.contains("Строка 4"));
 
-        list.remove(2);
-        System.out.println("list = " + list);
+//        list.remove(2);
+//        System.out.println("list = " + list);
+//
+//        System.out.println("list.get(1) = " + list.get(1));
+//        list.set(1, 333);
+//        System.out.println("list = " + list);
+//        list.clear();
+//        System.out.println("list = " + list);
 
-        System.out.println("list.get(1) = " + list.get(1));
-        list.set(1, 333);
-        System.out.println("list = " + list);
-        list.clear();
-        System.out.println("list = " + list);
+        list.remove("Строка 4");
+        System.out.println(list);
+
+        System.out.println("list.indexOf() = " + list.indexOf("Строка 3"));
+        System.out.println("list.lastIndexOf() = " + list.lastIndexOf("Строка 1"));
+
     }
 }

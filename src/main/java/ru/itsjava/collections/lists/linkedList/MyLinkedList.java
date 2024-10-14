@@ -1,14 +1,15 @@
-package ru.itsjava.collections.lists.linkedlist;
+package ru.itsjava.collections.lists.linkedList;
 
-public class MyLinkedList  {
+public class MyLinkedList {
     private Node head;
+
     public int size() {
         if (head == null) {
             return 0;
         }
-        int size = 1 ;
+        int size = 1;
         Node curNode = head;
-        while (curNode.getNext() != null){
+        while (curNode.getNext() != null) {
             curNode = curNode.getNext();
             size++;
         }
@@ -16,9 +17,9 @@ public class MyLinkedList  {
     }
 
     public boolean isEmpty() {
-        if (head != null){
+        if (head != null) {
             return false;
-        }else {
+        } else {
             return true;
         }
     }
@@ -43,10 +44,10 @@ public class MyLinkedList  {
     }
 
     public boolean add(Object o) {
-        Node resNode = new Node(o,null);
-        if (head == null){
+        Node resNode = new Node(o, null);
+        if (head == null) {
             head = resNode;
-        }else {
+        } else {
             Node curNode = head;
             while (curNode.getNext() != null) {
                 curNode = curNode.getNext();
@@ -57,8 +58,46 @@ public class MyLinkedList  {
     }
 
     public boolean remove(Object o) {
-        return false;
+        // проверяем если head равен null, возвращаем false
+        // если список пустой, то удалять ничего не нужно
+        if (head == null) return false;
+        if (head.getValue().equals(o)) {
+            // если у нас совпал элемент в head, то присваем head head.getNext
+            head = head.getNext();
+            // возвращаем true и переводим указатель на след элемент
+            return true;
+        }
+        // проверяем, есть ли следующий элемент после head
+        // если его нет, то мы не сможем бежать по элементам далее
+        // возвращаем false
+        if(head.getNext() == null) return false;
+        // создаем curNode и присваеваем head'у
+        Node curNode = head;
+        // создаем prevNode и присваеваем head'у
+        Node prevNode = head;
+        // присваиваем curNode head.getNext и говорим, что они не null
+        // потому что если бы это был null, то мы бы уже вернули false выше
+        while ((curNode = curNode.getNext()) != null){
+            if (curNode.getValue().equals(o)){
+                break;
+            }
+            prevNode = prevNode.getNext();
+        }
+        // дальше нужна проверка на null
+        // это значит, что мы пробежали по всему циклу, но так и не нашли элемент
+        // надо вернуть false, потому что не удалить элемент
+        if (curNode == null) return false;
+
+        // если мы нашли нужный элемент, тогда используем curNode.getNext
+        prevNode.setNext(curNode.getNext());
+        // присвоили текущему элементу null, чтобы никакой элемент на удаленную ссылку не указывал
+        curNode.setNext(null);
+        // возвращаем true
+        return true;
+
     }
+
+
 
     public void clear() {
         head = null;
@@ -167,12 +206,40 @@ public class MyLinkedList  {
     }
 
     public int indexOf(Object o) {
-        return 0;
+        if (isEmpty()){
+            return -1;
+        }
+        Node curNode = head;
+        int a = -1;
+        while (curNode!=null){
+            a++;
+            if (curNode.getValue().equals(o)){
+                return a;
+            }
+            curNode=curNode.getNext();
+        }
+        return -1;
     }
 
+
     public int lastIndexOf(Object o) {
-        return 0;
+        if (isEmpty()){
+            return -1;
+        }
+        Node curNode = head;
+        int i =-1;
+        int index = -1;
+
+        while (curNode!=null){
+            i++;
+            if (curNode.getValue().equals(o)){
+                index = i;
+            }
+            curNode=curNode.getNext();
+        }
+        return index;
     }
+
     //Alt+Insert
     @Override
     public String toString() {

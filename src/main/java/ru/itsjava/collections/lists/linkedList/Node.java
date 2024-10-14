@@ -1,4 +1,4 @@
-package ru.itsjava.collections.lists.linkedlist;
+package ru.itsjava.collections.lists.linkedList;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
