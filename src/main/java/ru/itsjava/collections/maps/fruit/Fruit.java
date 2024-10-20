@@ -8,6 +8,5 @@ import lombok.Data;
 public class Fruit {
     final String name;
     private final double weight;
-
 }
 
