@@ -96,12 +96,21 @@ public class FruitPractice {
         //8. Вернуть первый подходящий элемент:
         //а) Возвращаем элемент значение которого маракуйя или Маракуйя или МАРАкуйя.
         System.out.println("Возвращаем элемент значение которого маракуйя или Маракуйя или МАРАкуйя");
+//        for (Fruit elem : fruitMap.values()) {
+//            if (elem.getName().equals("Маракуйя") || elem.getName().equals("МАРАкуйя")) {
+//                System.out.println(elem);
+//                break;
+//            }
+//        }
         for (Fruit elem : fruitMap.values()) {
-            if (elem.getName().equals("Маракуйя") || elem.getName().equals("МАРАкуйя")) {
+            if (elem.name.equalsIgnoreCase("МАРАкуйя")) {
                 System.out.println(elem);
                 break;
             }
         }
+
+
+
         //9. Возвращаем все элементы удовлетворяющие условию:
         //а) Возвращаем все элементы в другую карту, которые являются апельсином или киви
         System.out.println("Возвращаем все элементы в другую карту, которые являются апельсином или киви");

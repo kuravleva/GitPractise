@@ -6,6 +6,8 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Fruit {
-    private final String name;
+    final String name;
     private final double weight;
+
 }
+
